@@ -18,7 +18,7 @@
   /* ── IMAGE ASSETS ─────────────────────────────────────────────
      Swap these two links to change the logo or the background.  */
   --img-logo: url('https://drive.google.com/thumbnail?id=1Dwl-SIx5JZmqR7UxscmnIHipbPMgsFWD&sz=w2000');
-  --bg-src:   'https://drive.google.com/thumbnail?id=1afDgsTpHVhYUMJ73Pn0PLDjemUOvYE5N&sz=w2000';
+  --bg-src:   'https://drive.google.com/thumbnail?id=1OWIJOifRO2WsIZZQBTUkbTmJBWHQpCW6&sz=w2000';
 
   /* ── 1. COLOR PALETTE ──────────────────────── */
   --bordeaux:   #4A1A23;   /* deep wine — headings, monogram accents      */
@@ -42,7 +42,7 @@
   --pos-s3-bot: 5%;
   --pos-s4-bot: 6%;
   --pos-s5-bot: 50%;
-  --pos-s6-bot: 20%;
+  --pos-s6-bot: 15%;
   --pos-s7-bot: 6%;
 
   /* ── 4. BUTTON SIZE CONTROLS ───────────────────────────────────  */
@@ -96,7 +96,7 @@ body{
 }
 @keyframes glowPulse {
   0%,100% { transform: scale(1); opacity: 0.6; }
-  50%      { transform: scale(1.15); opacity: 1; }
+  50%       { transform: scale(1.15); opacity: 1; }
 }
 
 .loader-logo-img {
@@ -368,7 +368,7 @@ body{
 :root{
   --s5-font: var(--font-italic);
   --s5-color: var(--hunter);
-  --s5-size: clamp(0.92rem, 4.16vw, 1.2rem);
+  --s5-size: clamp(0.75rem, 3.05vw, 1.00rem);
 
   --rsvp-color: var(--ivory);
   --rsvp-bg: var(--bordeaux);
@@ -401,13 +401,31 @@ body{
 :root{
   --s6-font: var(--font-italic);
   --s6-color: var(--bordeaux);
-  --s6-size: clamp(0.84rem, 3.68vw, 1.04rem);
+  --s6-size: clamp(1rem, 4vw, 1.2rem);
   --s6-ref-color: var(--hunter);
 }
-.quote-text{
-  font-family: var(--s6-font); font-style: italic;
-  font-size: var(--s6-size); color: var(--s6-color);
-  line-height: var(--lh-body); margin-bottom: 14px;
+.quote-text {
+  font-family: var(--s6-font); 
+  font-style: italic;
+  font-size: var(--s6-size); 
+  color: var(--s6-color);
+  line-height: var(--lh-body); 
+  margin-bottom: 14px;
+  
+  /* ✦ Updated: Added the natural glowing animation ✦ */
+  animation: naturalGlowPulse 4s ease-in-out infinite alternate;
+}
+
+/* ✦ The Animation Keyframes ✦ */
+@keyframes naturalGlowPulse {
+  0% {
+    text-shadow: 0 2px 4px rgba(255, 255, 255, 0.3), 
+                 0 3px 10px rgba(255, 255, 255, 0.1);
+  }
+  100% {
+    text-shadow: 0 2px 10px rgba(255, 255, 255, 0.65), 
+                 0 4px 22px rgba(255, 255, 255, 0.3);
+  }
 }
 .quote-ref{
   display:block; font-family: var(--font-display); font-size: 0.5em;
@@ -430,7 +448,7 @@ body{
 .closing-love{
   font-family: var(--s7-love-font); font-style: italic;
   font-size: var(--s7-love-size); color: var(--s7-love-color);
-  letter-spacing: 0.12em; margin-bottom: 10px; line-height: var(--lh-body);
+  letter-spacing: 0.12em; margin-bottom: 5px; line-height: var(--lh-tight);
 }
 .closing-names{
   font-family: var(--s7-names-font); font-size: var(--s7-names-size);
@@ -573,7 +591,7 @@ body{
 <div class="page" id="mainPage">
 
   <div class="page-bg-layers">
-    <img class="bg-main" src="https://drive.google.com/thumbnail?id=1afDgsTpHVhYUMJ73Pn0PLDjemUOvYE5N&sz=w2000" alt="Background Frame">
+    <img class="bg-main" src="https://drive.google.com/thumbnail?id=1OWIJOifRO2WsIZZQBTUkbTmJBWHQpCW6&sz=w2000" alt="Background Frame">
     <div class="bg-tint"></div>
   </div>
 
@@ -591,7 +609,7 @@ body{
     <div class="rule rule-names ani ani-rule-bot" style="animation-delay:1.6s;"></div>
 
     <div class="s1-invite on-light ani ani-pre" style="animation-delay:1.9s;">
-      warmly invite you to the celebration<br>of their wedding
+      &emsp;&emsp;warmly invite you to the celebration<br>of their wedding
     </div>
   </div>
 
@@ -637,7 +655,7 @@ body{
   </div>
 
   <div id="s5" class="band">
-    <p class="s5-text on-light rev">Your presence would mean<br>the world to us</p>
+    <p class="s5-text on-light rev">Your presence would <br>mean the world to us</p>
     <div class="rev">
       <button class="rsvp-trigger" onclick="openRSVP()">Kindly RSVP</button>
     </div>
@@ -645,8 +663,8 @@ body{
 
   <div id="s6" class="band">
     <div class="quote-text rev on-light">
-      “I am my beloved's </br>and my beloved is mine.”
-      <div class="quote-ref">Song of Solomon 6:3</div>
+      </br>“I am my beloved's </br>&emsp;and my beloved is mine.”
+      <div class="quote-ref">&emsp;&emsp;&emsp;Song of Solomon 6:3</div>
     </div>
     <div class="rule rev" style="width:14%;margin:0 auto;"></div>
   </div>
@@ -654,12 +672,14 @@ body{
   <div id="s7" class="band">
     <div class="rule rev" style="width:18%;margin:0 auto 14px;"></div>
     <div class="rev">
-      <p class="closing-love on-light">With all our love,</p>
-      <div class="closing-names name-shimmer on-light">Youssef & Tara</div>
+      <p class="closing-love on-light"><br>&emsp;With all our love,</p>
+      <div class="closing-names name-shimmer on-light">&emsp;Youssef & Tara</div>
     </div>
   </div>
 
-</div> <div id="rsvpModal" class="modal-overlay">
+</div> 
+
+<div id="rsvpModal" class="modal-overlay">
   <div class="modal-content">
     <button class="modal-close" onclick="closeRSVP()">✕</button>
 
