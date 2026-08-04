@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Youssef &amp; Tara — Wedding</title>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&amp;family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&amp;family=IM+Fell+English:ital@0;1&amp;family=Amiri:ital,wght@0,400;0,700;1,400&amp;display=swap" rel="stylesheet">
+<title>Youssef & Tara — Wedding</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=IM+Fell+English:ital@0;1&family=Amiri:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 
 <style>
 /* ══════════════════════════════════════════════════════════════════
@@ -31,17 +31,15 @@
   --font-italic:  'IM Fell English', serif;     
   --font-arabic:  'Amiri', serif;               
 
-  /* ── 3. GLOBAL SECTION SPACING (proportional to card width) ──── 
-     Using cqw (Container Query Width) ensures all vertical spacing 
-     scales down 1:1 with the background image on mobile devices. */
-  --pos-s1-top: 100cqw;
-  --pos-s1-bot: 10cqw;
-  --pos-s2-bot: 6.05cqw;
-  --pos-s3-bot: 5cqw;
-  --pos-s4-bot: 6.05cqw;
-  --pos-s5-bot: 55cqw;
-  --pos-s6-bot: 15cqw;
-  --pos-s7-bot: 6.05cqw;
+  /* ── 3. EXACT SECTION POSITIONS ──────────────────────────────── 
+     Positions map exactly to the provided percentages. */
+  --s1-top: 19.96%;
+  --s2-top: 45.09%;
+  --s3-top: 52.46%;
+  --s4-top: 60.19%;
+  --s5-top: 68.28%;
+  --s6-top: 84.50%;
+  --s7-top: 93.76%;
 
   /* ── 4. BUTTON SIZE CONTROLS ───────────────────────────────────  */
   --btn-loc-pad:  9px 20px;
@@ -164,42 +162,33 @@ body{
 
 /* ── PAGE WRAPPER ────────────────────────── */
 .page{
-  container-type: inline-size;
   width: min(100vw, 430px);
-  height: auto;
-  min-height: 100vh;
   position: relative;
   background: var(--bone);
   overflow-x: hidden;
-  display: flex;
-  flex-direction: column;
   opacity: 0;
   transform: scale(0.99);
   transition: opacity 1.8s cubic-bezier(0.4, 0, 0.2, 1), transform 1.8s cubic-bezier(0.4, 0, 0.2, 1);
-  padding-bottom: 20px;
 }
 .page.loaded { opacity: 1; transform: scale(1); }
 
 /* ══════════════════════════════════════════════════════
-   ✦ BACKGROUND LAYER
+   ✦ BACKGROUND LAYER (Dictates total container height)
 ══════════════════════════════════════════════════════ */
 .page-bg-layers {
-  position: absolute;
-  inset: 0;
+  position: relative;
+  width: 100%;
   z-index: 0;
-  overflow: hidden;
   pointer-events: none;
+  line-height: 0;
+  font-size: 0;
 }
 .page-bg-layers img {
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  object-fit: cover;
-  object-position: center top;
+  width: 100%;
+  height: auto;
   display: block;
 }
 .bg-main {
-  z-index: 1;
   opacity: 0;
   animation: bgFadeIn 2.2s ease 0.4s forwards;
 }
@@ -210,26 +199,26 @@ body{
   background: linear-gradient(180deg, rgba(216,208,194,0.10) 0%, rgba(216,208,194,0.02) 20%, rgba(216,208,194,0.02) 80%, rgba(216,208,194,0.15) 100%);
 }
 
-/* ── BANDS (SECTIONS) ───────────────────────────────── */
+/* ── BANDS (SECTIONS) mapped to percentages ────────────── */
 .band{
-  width:100%;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-  position:relative;
-  flex-shrink:0;
+  position: absolute;
+  left: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
   z-index: 10;
 }
 
-#s1{ height:auto; padding-top: var(--pos-s1-top); padding-bottom: var(--pos-s1-bot); padding-left:8%; padding-right:8%; }
-#s2{ padding-bottom: var(--pos-s2-bot); }
-#s3{ padding: 0 8%; padding-bottom: var(--pos-s3-bot); }
-#s4{ padding: 0 8%; padding-bottom: var(--pos-s4-bot); }
-#s5{ padding: 0 7%; padding-bottom: var(--pos-s5-bot); }
-#s6{ padding: 0 7%; padding-bottom: var(--pos-s6-bot); }
-#s7{ padding-bottom: var(--pos-s7-bot); }
+#s1 { top: var(--s1-top); padding: 0 8%; }
+#s2 { top: var(--s2-top); }
+#s3 { top: var(--s3-top); padding: 0 8%; }
+#s4 { top: var(--s4-top); padding: 0 8%; }
+#s5 { top: var(--s5-top); padding: 0 10%; }
+#s6 { top: var(--s6-top); padding: 0 9%; }
+#s7 { top: var(--s7-top); }
 
 /* ── TEXT HELPERS ──────────────────────── */
 .on-light{ text-shadow: 0 1px 4px rgba(35,49,38,0.12), 0 2px 12px rgba(251,248,242,0.65); }
@@ -398,7 +387,7 @@ body{
 :root{
   --s6-font: var(--font-italic);
   --s6-color: var(--bordeaux);
-  --s6-size: clamp(1rem, 3vw, 1.0rem);
+  --s6-size: clamp(0.8rem, 2.5vw, 0.9rem);
   --s6-ref-color: var(--hunter);
 }
 .quote-text {
@@ -452,7 +441,16 @@ body{
 /* ═══════════════════════════════════════
    SECTION SEPARATOR
 ═══════════════════════════════════════ */
-.section-separator{ display:flex; justify-content:center; align-items:center; width:100%; padding: 6px 0; position:relative; z-index:10; }
+.section-separator{
+  position: absolute;
+  top: 32.5%;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10; 
+}
 .separator-plant-img{ width: 30%; max-width: 110px; object-fit:contain; transform-origin:center; opacity:0; }
 .separator-plant-img.plant-revealed{
   animation: elegantPlantGrow 2.4s cubic-bezier(0.22, 1, 0.36, 1) forwards,
@@ -584,6 +582,7 @@ body{
 
 <div class="page" id="mainPage">
 
+  <!-- Background Layer now gives the page its definitive height -->
   <div class="page-bg-layers">
     <img class="bg-main" src="https://drive.google.com/thumbnail?id=1EF5z0WBK8v3fNZ9Z_v12FjyMNMjqcHt3&amp;sz=w2000" alt="Background Frame">
     <div class="bg-tint"></div>
