@@ -801,7 +801,7 @@ function submitRSVPModal() {
   const n = document.getElementById('mName').value.trim();
   if (!n) { alert('Please enter your full name.'); return; }
 
-  const SHEET_URL = 'REPLACE_WITH_YOUR_GOOGLE_SCRIPT_URL';
+  const SHEET_URL = 'https://script.google.com/macros/s/AKfycbzrjgaUxJjHf7QGSynynu9cjxR0b2PARLh74om7SrgBdLbX3-brdAJaC6xqwmRlfB4XUQ/exec';
 
   const formData = new URLSearchParams();
   formData.append('timestamp', new Date().toLocaleString());
