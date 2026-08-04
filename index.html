@@ -35,15 +35,22 @@
   --font-italic:  'IM Fell English', serif;     /* italic / romantic lines     */
   --font-arabic:  'Amiri', serif;               /* reserved for Arabic text    */
 
-  /* ── 3. GLOBAL SECTION SPACING (top/bottom padding per band) ──── */
-  --pos-s1-top: 100%;
-  --pos-s1-bot: 10%;
-  --pos-s2-bot: 6%;
-  --pos-s3-bot: 5%;
-  --pos-s4-bot: 6%;
-  --pos-s5-bot: 55%;
-  --pos-s6-bot: 15%;
-  --pos-s7-bot: 6%;
+  /* ── 3. GLOBAL SECTION SPACING (top/bottom padding per band) ──── 
+     NOTE: these were originally % values. Percentage padding is
+     calculated against the element's own width, and .page is capped
+     at 430px on PC/tablet/laptop but shrinks to the real (smaller)
+     screen width on phones — so every section's spacing quietly
+     shrank on mobile, and the drift compounded by the time it
+     reached S6/S7 near the bottom. Fixed px values (equal to the
+     original % of 430px) keep spacing identical on every device. */
+  --pos-s1-top: 430px;
+  --pos-s1-bot: 43px;
+  --pos-s2-bot: 26px;
+  --pos-s3-bot: 21.5px;
+  --pos-s4-bot: 26px;
+  --pos-s5-bot: 236.5px;
+  --pos-s6-bot: 64.5px;
+  --pos-s7-bot: 26px;
 
   /* ── 4. BUTTON SIZE CONTROLS ───────────────────────────────────  */
   --btn-loc-pad:  9px 20px;
